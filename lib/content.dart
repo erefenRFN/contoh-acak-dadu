@@ -12,10 +12,12 @@ class DiceRoller extends StatefulWidget {
   }
 }
 class _DiceRollerState extends State<DiceRoller> {
-  var currentDiceRoll = 2;
+  var currentDiceRoll1 = 2;
+  var currentDiceRoll2 = 1;
   void rollDice() {
     setState(() {
-      currentDiceRoll = randomizer.nextInt(6)+ 1;
+      currentDiceRoll1 = randomizer.nextInt(6)+ 1;
+      currentDiceRoll2 = randomizer.nextInt(6)+ 1;
     });
   }
   @override
@@ -23,9 +25,18 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset(
-          "assets/dice-$currentDiceRoll.png",
-          width: 200,
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              "assets/dice-$currentDiceRoll1.png",
+              width: 200,
+            ),
+            Image.asset(
+              "assets/dice-$currentDiceRoll2.png",
+              width: 200,
+            ),
+          ]
         ),
         CupertinoButton(
           onPressed: rollDice,
